@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.sql.exec.spi.StandardEntityInstanceResolver;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Getter @Setter @EqualsAndHashCode(of = "id")
@@ -52,5 +53,7 @@ public class Account {
 
     private boolean studyUpdatedByWeb;
 
-
+    public void generateEmailCheckToken() {
+        this.emailCheckToken = UUID.randomUUID().toString();
+    }
 }
