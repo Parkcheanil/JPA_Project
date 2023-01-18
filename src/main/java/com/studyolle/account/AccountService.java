@@ -23,20 +23,19 @@ public class AccountService {
         Account account = Account.builder()
                 .email(signUpForm.getEmail())
                 .nickname(signUpForm.getNickname())
-                .password(signUpForm.getPassword())  // TODO endoding 해야함
+                .password(signUpForm.getPassword())  // TODO encoding 해야함
                 .studyCreatedByWeb(true)
                 .studyEnrollmentResultByWeb(true)
                 .studyUpdatedByWeb(true)
                 .build();
-        Account newAccount= accountRepository.save(account);
-        return newAccount;
+        return accountRepository.save(account);
     }
 
     private void sendSignUpConfirmEmail(Account newAccount) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(newAccount.getEmail());
         mailMessage.setSubject("스터디올래, 회원 가입 인증");
-        mailMessage.setText("/check-email-token?toekn=" + newAccount.getEmailCheckToken() +
+        mailMessage.setText("/check-email-token?token=" + newAccount.getEmailCheckToken() +
                 "&email=" + newAccount.getEmail());
         javaMailSender.send(mailMessage);
     }
