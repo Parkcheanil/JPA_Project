@@ -28,3 +28,8 @@
     - 오히려 느리다는게 장점.
   - 인증 메일 확인 테스트 및 리팩토링
     - JPA의 Detached상태와 persistent상태에 따른 오류 상황발생.
+- 2023-01-23
+  - 회원가입 완료 후 자동 로그인
+    - 스프링 시큐리티 관점에서 로그인
+    - SecurityContext에 Authentication(Token)이 존재하는가?
+    - UsernamePasswordAuthenticationToken
