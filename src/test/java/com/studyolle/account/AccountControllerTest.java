@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +53,7 @@ class AccountControllerTest {
 
     @DisplayName("인증 메일 확인 - 입력값 정상")
     @Test
+    @WithMockUser
     void checkEmailToken() throws Exception {
         Account account = Account.builder()
                 .email("test@email.com")
@@ -98,6 +100,7 @@ class AccountControllerTest {
 
     @DisplayName("회원 가입 처리 - 입력값 정상")
     @Test
+    @WithMockUser
     void signUpSubmit_with_correct_input() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/sign-up")
                 .param("nickname", "park")
