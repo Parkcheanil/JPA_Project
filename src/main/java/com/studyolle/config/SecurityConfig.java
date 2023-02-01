@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/", "/login", "/sign-up", "/check-email", "/check-email-token",
                         "/email-login", "/check-email-login", "/login-link").permitAll()
-                .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
+                .requestMatchers(HttpMethod.GET, "/profile/*", "/node_modules/**").permitAll()
                 .anyRequest().authenticated();
 
         return http.build();
@@ -31,6 +31,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
         return (web) -> web.ignoring()
+                .requestMatchers("/node_modules/**")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 }

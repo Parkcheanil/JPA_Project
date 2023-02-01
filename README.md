@@ -33,3 +33,5 @@
     - 스프링 시큐리티 관점에서 로그인
     - SecurityContext에 Authentication(Token)이 존재하는가?
     - UsernamePasswordAuthenticationToken
+-2023-02-01
+    - 스프링시큐리티에 걸리지 않도록 요청 url을 제외시켜줘야함.
