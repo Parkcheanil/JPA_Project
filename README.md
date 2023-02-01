@@ -35,3 +35,6 @@
     - UsernamePasswordAuthenticationToken
 -2023-02-01
     - 스프링시큐리티에 걸리지 않도록 요청 url을 제외시켜줘야함.
+    - 타임리프 fragments 사용하여 뷰중복코드 제거.
+    - html에서 th:replace 적용 안되서 th:insert 사용.
+    - 회원가입시 인증값 확인 안되는 오류 해결 못함.
