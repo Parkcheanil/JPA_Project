@@ -22,12 +22,12 @@ public class AccountController {
     @InitBinder("signUpForm")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(signUpFormValidator);
-
     }
 
     @GetMapping("/sign-up")
     public String signUpForm(Model model) {
         model.addAttribute(new SignUpForm());
+        System.out.println("폼 입력 => " + model);
         return "account/sign-up";
     }
 
@@ -39,6 +39,8 @@ public class AccountController {
 
         Account account = accountService.processNewAccount(signUpForm);
         accountService.login(account);
+
+        System.out.println("signUpSubmit메서드 => " + account.getNickname());
         return  "redirect:/";
     }
 

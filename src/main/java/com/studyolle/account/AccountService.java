@@ -57,6 +57,11 @@ public class AccountService {
                 new UserAccount(account),
                 account.getPassword(),
                 List.of(new SimpleGrantedAuthority("ROLE_USER")));
-        SecurityContextHolder.getContext().setAuthentication(token);
+
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(token);
+
+//        SecurityContextHolder.getContext().setAuthentication(token);
+        System.out.println("로그인 토큰정보 = > " + context);
     }
 }
