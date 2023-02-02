@@ -20,9 +20,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/login", "/sign-up", "/check-email", "/check-email-token",
+                .requestMatchers("/", "/login", "/sign-up", "/check-email-token",
                         "/email-login", "/check-email-login", "/login-link").permitAll()
-                .requestMatchers(HttpMethod.GET, "/profile/*", "/node_modules/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
                 .anyRequest().authenticated();
 
         return http.build();

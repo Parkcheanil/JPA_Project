@@ -2,7 +2,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:insert="~{fragments :: head}" />
+<head th:insert="~{fragments :: head}" ></head>
 <body class="bg-light">
     <div th:insert="~{fragments :: main-nav}"></div>
     <div class="alert alert-warning" role="alert" th:if="${account != null && !account.emailVerified}">
