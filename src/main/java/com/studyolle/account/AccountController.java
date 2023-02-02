@@ -1,7 +1,6 @@
 package com.studyolle.account;
 
 import com.studyolle.domain.Account;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +9,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +28,6 @@ public class AccountController {
     @GetMapping("/sign-up")
     public String signUpForm(Model model) {
         model.addAttribute(new SignUpForm());
-        System.out.println("폼 입력 => " + model);
         return "account/sign-up";
     }
 
@@ -39,9 +39,7 @@ public class AccountController {
 
         Account account = accountService.processNewAccount(signUpForm);
         accountService.login(account);
-
-        System.out.println("signUpSubmit메서드 => " + account.getNickname());
-        return  "redirect:/";
+        return "redirect:/";
     }
 
     @GetMapping("/check-email-token")

@@ -14,7 +14,7 @@ public class MainController {
         if (account != null) {
             model.addAttribute(account);
         }
-
+//        System.out.println("MainController => " + account.getEmail());
         return "index";
     }
 }
