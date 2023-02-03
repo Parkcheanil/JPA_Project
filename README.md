@@ -49,4 +49,4 @@
 - 2023-02-03
   - 스프링 시큐리티에서 formLogin().loginPage()로 커스텀 로그인 페이지 사용.
   - DB의 정보를 확인하는 UserDetailsService 를 구현.
-  - 
+  - 회원가입 후 redirect:/ 시 SecurityContext 정보가 다 사라지는 오류 해결못함.

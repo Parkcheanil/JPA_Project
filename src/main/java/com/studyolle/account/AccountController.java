@@ -1,6 +1,7 @@
 package com.studyolle.account;
 
 import com.studyolle.domain.Account;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -32,14 +34,14 @@ public class AccountController {
     }
 
     @PostMapping("/sign-up")
-    public String signUpSubmit(@Valid SignUpForm signUpForm, Errors errors) {
+    public String signUpSubmit(@Valid SignUpForm signUpForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "account/sign-up";
         }
 
         Account account = accountService.processNewAccount(signUpForm);
         accountService.login(account);
-        return "redirect:/";
+        return "/index";
     }
 
     @GetMapping("/check-email-token")

@@ -5,6 +5,7 @@ import com.studyolle.domain.Account;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -14,7 +15,6 @@ public class MainController {
         if (account != null) {
             model.addAttribute(account);
         }
-//        System.out.println("MainController => " + account.getEmail());
         return "index";
     }
 

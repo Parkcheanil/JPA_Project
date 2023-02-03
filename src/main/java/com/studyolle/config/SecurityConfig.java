@@ -19,14 +19,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests()
+            .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/login", "/sign-up", "/check-email-token",
-                        "/email-login", "/check-email-login", "/login-link", "**/favicon.ico").permitAll()
+                            "/email-login", "/check-email-login", "/login-link").permitAll()
                 .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+            );
 
         http.formLogin()
-                .loginPage("/login").permitAll();
+                    .loginPage("/login").permitAll();
 
         http.logout()
                 .logoutSuccessUrl("/");
@@ -37,7 +38,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
         return (web) -> web.ignoring()
-                .requestMatchers("/node_modules/**")
+                .requestMatchers("/node_modules/**", "/favicon.ico")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 }

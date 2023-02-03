@@ -6,11 +6,13 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,7 +60,8 @@ public class AccountService implements UserDetailsService {
                 new UserAccount(account),
                 account.getPassword(),
                 List.of(new SimpleGrantedAuthority("ROLE_USER")));
-        SecurityContextHolder.getContext().setAuthentication(token);
+        SecurityContext context = SecurityContextHolder.getContext();
+        context.setAuthentication(token);
     }
 
     @Override
