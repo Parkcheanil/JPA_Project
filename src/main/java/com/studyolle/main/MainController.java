@@ -17,4 +17,9 @@ public class MainController {
 //        System.out.println("MainController => " + account.getEmail());
         return "index";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
