@@ -3,6 +3,9 @@ package com.studyolle.account;
 import com.studyolle.domain.Account;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -41,7 +44,7 @@ public class AccountController {
 
         Account account = accountService.processNewAccount(signUpForm);
         accountService.login(account);
-        return "/index";
+        return "redirect:/";
     }
 
     @GetMapping("/check-email-token")
