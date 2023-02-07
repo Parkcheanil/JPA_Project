@@ -36,7 +36,7 @@ public class Account {
 
     private String url;
 
-    private String occupataion;
+    private String occupation;
 
     private String location;
 

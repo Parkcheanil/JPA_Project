@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{fragments :: head}" ></head>
 <body class="bg-light">
     <div th:insert="~{fragments :: main-nav}"></div>
@@ -42,12 +41,12 @@
                             </span>
                             <span th:text="${account.url}" class="col-11"></span>
                         </p>
-                        <!--<p th:if="${!#strings.isEmpty(account.occupation)}">
+                        <p th:if="${!#strings.isEmpty(account.occupation)}">
                             <span style="font-size: 20px;">
                                 <i class="fa fa-briefcase col-1"></i>
                             </span>
                             <span th:text="${account.occupation}" class="col-9"></span>
-                        </p>-->
+                        </p>
                         <p th:if="${!#strings.isEmpty(account.location)}">
                             <span style="font-size: 20px;">
                                 <i class="fa fa-location-arrow col-1"></i>

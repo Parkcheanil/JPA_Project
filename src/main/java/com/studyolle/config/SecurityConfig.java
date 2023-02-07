@@ -35,7 +35,7 @@ public class SecurityConfig {
             );
 
         http.formLogin()
-                    .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll();
 
         http.logout()
                 .logoutSuccessUrl("/");
