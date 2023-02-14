@@ -72,3 +72,7 @@
       - 기본생성자가 없어서 null포인트오류발생 하기 때문에 lomBok 어노테이션(@NoArgsConstructor) 사용.
       - 프로필 수정시 account객체의 상태값이 Detached 객체라서 DB싱크가 맞지 않음.
       - repository의 save함수로 객체를 넘김.
+  - 2023-02-14
+    - 프로필 수정 테스트
+      - 실제 DB에 저장되어 있는 정보에 대응하는 인증된 Authentication이 필요해서 커스텀 어노테이션 생성.
+      - 인증된 사용자를 제공할 커스텀 애노테이션 만들기
