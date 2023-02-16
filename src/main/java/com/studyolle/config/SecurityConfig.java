@@ -29,7 +29,7 @@ public class SecurityConfig {
         http.csrf().disable()
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/login", "/sign-up", "/check-email-token",
-                            "/email-login", "/check-email-login", "/login-link").permitAll()
+                            "/email-login", "/check-login-email", "/login-link", "/login-by-email").permitAll()
                 .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
                 .anyRequest().authenticated()
             );
