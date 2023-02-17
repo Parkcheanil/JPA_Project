@@ -26,11 +26,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.httpBasic().disable()
+            .csrf().disable()
+            .cors().and()
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/login", "/sign-up", "/check-email-token",
                             "/email-login", "/check-login-email", "/login-link", "/login-by-email").permitAll()
-                .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
+                .requestMatchers(HttpMethod.GET, "/profile/*", "/settings/*").permitAll()
                 .anyRequest().authenticated()
             );
 
