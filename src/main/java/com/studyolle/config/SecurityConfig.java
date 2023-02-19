@@ -11,8 +11,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import javax.sql.DataSource;
 
@@ -27,17 +29,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.httpBasic().disable()
-            .csrf().disable()
+            .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+//            .csrf().disable()
             .cors().and()
             .authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/login", "/sign-up", "/check-email-token",
-                            "/email-login", "/check-login-email", "/login-link", "/login-by-email").permitAll()
-                .requestMatchers(HttpMethod.GET, "/profile/*", "/settings/*").permitAll()
+                            "/email-login", "/check-login-email", "/login-link").permitAll()
+                .requestMatchers(HttpMethod.GET, "/profile/*").permitAll()
                 .anyRequest().authenticated()
             );
 
-        http.formLogin()
-                .loginPage("/login").permitAll();
+        http.formLogin(form -> form
+                .loginPage("/login")
+                .permitAll()
+            );
 
         http.logout()
                 .logoutSuccessUrl("/");
