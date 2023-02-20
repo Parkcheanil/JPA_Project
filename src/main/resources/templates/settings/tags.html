@@ -19,7 +19,10 @@
                         또는 엔터를 입력하세요.
                     </div>
 <!--                    <div id="whitelist" th:text="${whitelist}" hidden></div>-->
-                    <input id="tags" type="text" name="tags" class="tagify--outside" aria-describedby="tagHelp"/>
+                    <!-- 들어온 데이터 형태 = List<String> tags= List.of("Spring", "Hibernate", "JPA") 이걸 => Spring, Hibernate, JPA 형태로 변경
+                        하기 위해 타임리프의 strings 사용 -->
+                    <input id="tags" type="text" name="tags" th:value="${#strings.listJoin(tags, ',')}"
+                           class="tagify--outside" aria-describedby="tagHelp"/>
                 </div>
             </div>
         </div>

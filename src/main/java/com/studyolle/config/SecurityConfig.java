@@ -2,6 +2,7 @@ package com.studyolle.config;
 
 
 import com.studyolle.account.AccountService;
+import jakarta.servlet.DispatcherType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
