@@ -1,6 +1,6 @@
 package com.studyolle.domain;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import org.hibernate.sql.exec.spi.StandardEntityInstanceResolver;
