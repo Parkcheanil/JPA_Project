@@ -157,5 +157,6 @@ class SettingsControllerTest {
                 .andExpect(model().attributeExists("account"))
                 .andExpect(model().attributeExists("nicknameForm"))
                 .andExpect(model().hasErrors());
+
     }
 }
