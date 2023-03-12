@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.sql.exec.spi.StandardEntityInstanceResolver;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -57,7 +58,7 @@ public class Account {
     private boolean studyUpdatedByWeb = true;
 
     @ManyToMany
-    private Set<Tag> tags;
+    private Set<Tag> tags = new HashSet<>();
 
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();
