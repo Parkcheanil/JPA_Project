@@ -36,3 +36,4 @@ build/
 src/main/resources/static/node_modules
 src/main/resources/static/node
 /.metadata/
+src/main/resources/application.properties
